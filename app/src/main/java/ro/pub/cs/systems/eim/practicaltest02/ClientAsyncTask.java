@@ -4,10 +4,6 @@ package ro.pub.cs.systems.eim.practicaltest02;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.EditText;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.Socket;
@@ -41,6 +37,7 @@ public class ClientAsyncTask extends AsyncTask<String, String, Void> {
             while ((currentLine = bufferedReader.readLine()) != null) {
                 publishProgress(currentLine);
             }
+            Log.v(Constants.TAG, "Client task finished");
         } catch (IOException ioException) {
             Log.e(Constants.TAG, "An exception has occurred: " + ioException.getMessage());
             if (Constants.DEBUG) {
