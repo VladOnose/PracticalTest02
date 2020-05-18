@@ -41,17 +41,12 @@ public class CommunicationThread extends Thread {
             if (content != null) {
                 JSONObject jason = new JSONObject(content);
                 JSONObject bpi = jason.getJSONObject(Constants.currencyMain);
-                if (infoRequest.compareTo(Constants.EUR) == 0) {
-                    response = bpi.getJSONObject(Constants.EUR).get(Constants.currencyStr).toString();
-                } else if (infoRequest.compareTo(Constants.USD) == 0) {
-                    response = bpi.getJSONObject(Constants.USD).get(Constants.currencyStr).toString();
-                } else {
-                    response = "-1";
-                }
+
                 Log.v(Constants.TAG, "CommunicationThread: response is " + response);
             } else {
                 error = "-1";
                 response = null;
+                Log.v(Constants.TAG, "Server error: content is null");
             }
         } catch (Exception exception) {
             error = "-1";

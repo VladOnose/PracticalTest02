@@ -5,6 +5,8 @@ public interface Constants {
 
     public final static boolean DEBUG = true;
 
+    public final static int SLEEP_TIME = 60000;
+
     public final static String TAG = "Client Server Comm";
 
     public final static String currencyAPIURL = "https://api.coindesk.com/v1/bpi/currentprice/EUR.json";

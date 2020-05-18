@@ -3,6 +3,8 @@ package ro.pub.cs.systems.eim.practicaltest02;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,13 +41,19 @@ public class PracticalTest02MainActivity extends AppCompatActivity {
 
         currency = findViewById(R.id.currencySpinner);
 
-        final String currencyString = "EUR";
-
         serverConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 serverThread = new ServerThread(Integer.valueOf(serverPort.getText().toString()));
                 serverThread.startServer();
+            }
+        });
+
+        clientConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v(Constants.TAG, "Creating new client task");
+                new ClientAsyncTask(currency.getSelectedItem().toString(), currencyTextView).execute(ip.getText().toString(), clientPort.getText().toString());
             }
         });
 
